@@ -1,12 +1,5 @@
 import React, { FC, useCallback, useState } from 'react'
-import {
-  ActivityIndicator,
-  FlatList,
-  Keyboard,
-  Text,
-  TextInput,
-  View
-} from 'react-native'
+import { ActivityIndicator, FlatList, Keyboard, Text, TextInput, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Card from '../../components/Card'
@@ -15,7 +8,6 @@ import { BLACK } from '../../theme/colors'
 import AppState from '../../types/AppState'
 import { NO_MOVIES_MESSAGE } from '../../utils/constants'
 import { fetchMovies } from './store/actions'
-
 
 // TODO: Add the correct type for navigation
 interface SearchScreenProps {
@@ -27,14 +19,12 @@ const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const serchTermValid = setSearchTerm.length !== 0
   const movies = useSelector(
-    ({ moviesState }: AppState) =>
-      moviesState && moviesState.fetchMoviesSuccess || []
+    ({ moviesState }: AppState) => (moviesState && moviesState.fetchMoviesSuccess) || [],
   )
-  console.log("movies", movies)
+  console.log('movies', movies)
 
   const fetchingMovies = useSelector(
-    ({ moviesState }: AppState) =>
-      moviesState && moviesState.fetchMoviesInProgress || false
+    ({ moviesState }: AppState) => (moviesState && moviesState.fetchMoviesInProgress) || false,
   )
 
   const searchMovie = useCallback(() => {
@@ -59,21 +49,21 @@ const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
           onSubmitEditing={handleOnSubmitEditing}
         />
       </View>
-      {
-        movies.length ?
-          <FlatList
-            data={movies}
-            renderItem={itemData =>
-              <Card
-                title={itemData.item.Title}
-                imageUri={itemData.item.Poster}
-                onPress={() => navigate('Detail', { movieId: itemData.item.imdbID })}
-              />
-            }
-            keyExtractor={(item) => item.imdbID}
-          /> :
-          <Text style={styles.message}>{NO_MOVIES_MESSAGE}</Text>
-      }
+      {movies.length ? (
+        <FlatList
+          data={movies}
+          renderItem={(itemData) => (
+            <Card
+              title={itemData.item.Title}
+              imageUri={itemData.item.Poster}
+              onPress={() => navigate('Detail', { movieId: itemData.item.imdbID })}
+            />
+          )}
+          keyExtractor={(item) => item.imdbID}
+        />
+      ) : (
+        <Text style={styles.message}>{NO_MOVIES_MESSAGE}</Text>
+      )}
 
       {fetchingMovies && <ActivityIndicator size={'large'} color={BLACK} />}
     </View>

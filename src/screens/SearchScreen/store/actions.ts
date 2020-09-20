@@ -1,8 +1,14 @@
-import { ThunkAction } from "redux-thunk"
-import AppState from "../../../types/AppState"
-import { Movie } from "../../../types/Movie"
-import { API_KEY, FETCHING_MOVIES_ERROR_MESSAGE } from "../../../utils/constants"
-import { FetchMoviesType, FETCH_MOVIES_ERROR, FETCH_MOVIES_IN_PROGRESSS, FETCH_MOVIES_SUCCESS } from "./actionTypes"
+import { ThunkAction } from 'redux-thunk'
+
+import AppState from '../../../types/AppState'
+import { Movie } from '../../../types/Movie'
+import { API_KEY, FETCHING_MOVIES_ERROR_MESSAGE } from '../../../utils/constants'
+import {
+  FetchMoviesType,
+  FETCH_MOVIES_ERROR,
+  FETCH_MOVIES_IN_PROGRESSS,
+  FETCH_MOVIES_SUCCESS,
+} from './actionTypes'
 
 function fetchMoviesInProgress(): FetchMoviesType {
   return {
@@ -40,5 +46,4 @@ export const fetchMovies = (
       dispatch(fetchMoviesError(errorMessage))
     }
   }
-
 }

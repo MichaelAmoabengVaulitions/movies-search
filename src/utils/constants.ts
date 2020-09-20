@@ -1,4 +1,4 @@
-// NOTE: API keys used not be stored on the repository 
+// NOTE: API keys used not be stored on the repository
 export const API_KEY: string = 'cff54c90'
 
 // NOTE: Will be very useful to handle translations

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+
 import { GRAY, RED_WARNING } from '../../theme/colors'
 import { SCREEN_HEIGHT } from '../../theme/dimensions'
 
@@ -11,7 +12,7 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     color: RED_WARNING,
     textAlign: 'center',
-    marginTop: SCREEN_HEIGHT / 3
+    marginTop: SCREEN_HEIGHT / 3,
   },
   inputContainer: {
     margin: 15,
@@ -21,6 +22,6 @@ export const styles = StyleSheet.create({
     height: 50,
     marginTop: 60,
     padding: 10,
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 })

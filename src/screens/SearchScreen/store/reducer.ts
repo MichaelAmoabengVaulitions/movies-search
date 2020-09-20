@@ -3,14 +3,13 @@ import {
   FETCH_MOVIES_ERROR,
   FETCH_MOVIES_IN_PROGRESSS,
   FETCH_MOVIES_SUCCESS,
-  MoviesState
+  MoviesState,
 } from './actionTypes'
-
 
 const initialState: MoviesState = {
   fetchMoviesInProgress: false,
   fetchMoviesSuccess: undefined,
-  fetchMoviesErrorMessage: undefined
+  fetchMoviesErrorMessage: undefined,
 }
 
 export default function FetchMoviesReducer(

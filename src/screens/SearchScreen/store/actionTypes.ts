@@ -1,5 +1,5 @@
-import ErrorPayload from "../../../types/ErrorPayload"
-import { Movie } from "../../../types/Movie"
+import ErrorPayload from '../../../types/ErrorPayload'
+import { Movie } from '../../../types/Movie'
 
 export const FETCH_MOVIES_IN_PROGRESSS = 'FETCH_MOVIES_IN_PROGRESSS'
 export const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS'

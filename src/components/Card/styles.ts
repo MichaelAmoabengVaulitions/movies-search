@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+
 import { BLACK, WHITE } from '../../theme/colors'
 
 export const styles = StyleSheet.create({
@@ -16,17 +17,17 @@ export const styles = StyleSheet.create({
     height: 140,
     backgroundColor: WHITE,
     alignItems: 'center',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   poster: {
     height: '100%',
-    width: '100%'
+    width: '100%',
   },
   posterContainer: {
     height: 100,
     width: 100,
     borderRadius: 8,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   title: {
     flex: 1,
@@ -42,5 +43,4 @@ export const styles = StyleSheet.create({
     color: WHITE,
     textAlign: 'center',
   },
-
 })
