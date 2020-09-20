@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { RED_WARNING } from '../../theme/colors'
+import { GRAY, RED_WARNING } from '../../theme/colors'
 import { SCREEN_HEIGHT } from '../../theme/dimensions'
 
 export const styles = StyleSheet.create({
@@ -12,5 +12,15 @@ export const styles = StyleSheet.create({
     color: RED_WARNING,
     textAlign: 'center',
     marginTop: SCREEN_HEIGHT / 2
+  },
+  inputContainer: {
+    margin: 15,
+    borderWidth: 1,
+    borderColor: GRAY,
+    borderRadius: 10,
+    height: 50,
+    marginTop: 60,
+    padding: 10,
+    justifyContent: 'center'
   }
 })

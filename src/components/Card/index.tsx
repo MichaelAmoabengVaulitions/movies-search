@@ -42,14 +42,13 @@ const Card: FC<CardProps> = ({ title, imageUri, style, onPress }) => {
         source={getImageBackgroundByTitleLength(title)}
         blurRadius={5}
         resizeMode={'cover'}>
-        {!imageUri ?
+        {imageUri !== 'N/A' ?
           <Image
             source={{ uri: imageUri }}
             resizeMode={'contain'}
             style={styles.poster}
           /> :
           <Text style={styles.fallback}>{NO_POSTER_MESSAGE}</Text>}
-
         <Text style={styles.title} numberOfLines={2}>{title}</Text>
       </ImageBackground>
     </TouchableWithoutFeedback>
