@@ -17,7 +17,8 @@ import { styles } from './styles'
 interface CardProps {
   imageUri: string,
   title: string,
-  style?: ViewStyle
+  style?: ViewStyle,
+  onPress: () => void
 }
 
 const getImageBackgroundByTitleLength = (title: string): ImageURISource => {
@@ -32,10 +33,10 @@ const getImageBackgroundByTitleLength = (title: string): ImageURISource => {
       return firstCardImage
   }
 }
-const Card: FC<CardProps> = ({ title, imageUri, style }) => {
+const Card: FC<CardProps> = ({ title, imageUri, style, onPress }) => {
 
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback {...onPress}>
       <ImageBackground
         style={{ ...styles.mainContainer, ...style }}
         source={getImageBackgroundByTitleLength(title)}
