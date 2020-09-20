@@ -4,14 +4,11 @@ import {
   Text,
   TouchableWithoutFeedback,
   ImageBackground,
-  ImageURISource,
   ViewStyle, View
 } from 'react-native'
 
-import firstCardImage from '../../../assets/images/card1.png'
-import secondCardImage from '../../../assets/images/card2.png'
-import thirdCardImage from '../../../assets/images/card3.png'
 import { NO_POSTER_MESSAGE } from '../../utils/constants'
+import { getImageBackgroundByTitleLength } from '../../utils/functions'
 import { styles } from './styles'
 
 interface CardProps {
@@ -21,18 +18,7 @@ interface CardProps {
   onPress: () => void
 }
 
-const getImageBackgroundByTitleLength = (title: string): ImageURISource => {
-  switch (true) {
-    case title.length >= 16:
-      return firstCardImage
-    case title.length >= 10:
-      return secondCardImage
-    case title.length >= 20:
-      return thirdCardImage
-    default:
-      return firstCardImage
-  }
-}
+
 const Card: FC<CardProps> = ({ title, imageUri, style, onPress }) => {
 
   return (

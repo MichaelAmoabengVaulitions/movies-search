@@ -30,6 +30,7 @@ const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
     ({ moviesState }: AppState) =>
       moviesState && moviesState.fetchMoviesSuccess || []
   )
+  console.log("movies", movies)
 
   const fetchingMovies = useSelector(
     ({ moviesState }: AppState) =>
@@ -66,7 +67,7 @@ const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
               <Card
                 title={itemData.item.Title}
                 imageUri={itemData.item.Poster}
-                onPress={() => navigate('Detail', { params: { movieId: itemData.item.imdbID } })}
+                onPress={() => navigate('Detail', { movieId: itemData.item.imdbID })}
               />
             }
             keyExtractor={(item) => item.imdbID}
