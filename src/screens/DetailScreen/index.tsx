@@ -1,13 +1,11 @@
-import { useRoute } from '@react-navigation/native'
 import React, { FC } from 'react'
 import { Text, ImageBackground, Image } from 'react-native'
+import { useRoute } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 
 import AppState from '../../types/AppState'
 import { Movie } from '../../types/Movie'
-
 import { getImageBackgroundByTitleLength } from '../../utils/functions'
-
 import { styles } from './styles'
 
 const DetailScreen: FC = () => {
