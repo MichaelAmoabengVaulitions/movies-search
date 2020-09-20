@@ -5,7 +5,7 @@ import {
   TouchableWithoutFeedback,
   ImageBackground,
   ImageURISource,
-  ViewStyle
+  ViewStyle, View
 } from 'react-native'
 
 import firstCardImage from '../../../assets/images/card1.png'
@@ -43,11 +43,13 @@ const Card: FC<CardProps> = ({ title, imageUri, style, onPress }) => {
         blurRadius={5}
         resizeMode={'cover'}>
         {imageUri !== 'N/A' ?
-          <Image
-            source={{ uri: imageUri }}
-            resizeMode={'contain'}
-            style={styles.poster}
-          /> :
+          <View style={styles.posterContainer}>
+            <Image
+              source={{ uri: imageUri }}
+
+              style={styles.poster}
+            />
+          </View> :
           <Text style={styles.fallback}>{NO_POSTER_MESSAGE}</Text>}
         <Text style={styles.title} numberOfLines={2}>{title}</Text>
       </ImageBackground>
