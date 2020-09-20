@@ -26,4 +26,9 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: 20,
   },
+  backButtonContainer: {
+    position: 'absolute',
+    top: 40,
+    left: 30,
+  },
 })

@@ -15,13 +15,17 @@ export const styles = StyleSheet.create({
     marginTop: SCREEN_HEIGHT / 3,
   },
   inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
     margin: 15,
     borderWidth: 1,
     borderColor: GRAY,
-    borderRadius: 10,
+    borderRadius: 12,
     height: 50,
     marginTop: 60,
     padding: 10,
-    justifyContent: 'center',
+  },
+  inputField: {
+    marginLeft: 10,
   },
 })

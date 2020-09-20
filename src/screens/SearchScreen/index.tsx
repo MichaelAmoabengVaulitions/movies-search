@@ -1,10 +1,11 @@
 import React, { FC, useCallback, useState } from 'react'
 import { ActivityIndicator, FlatList, Keyboard, Text, TextInput, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+import { Ionicons } from '@expo/vector-icons'
 
 import Card from '../../components/Card'
 import { styles } from './styles'
-import { BLACK } from '../../theme/colors'
+import { BLACK, GRAY } from '../../theme/colors'
 import AppState from '../../types/AppState'
 import { NO_MOVIES_MESSAGE } from '../../utils/constants'
 import { fetchMovies } from './store/actions'
@@ -40,12 +41,14 @@ const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
   return (
     <View style={styles.mainView}>
       <View style={styles.inputContainer}>
+        <Ionicons name="ios-search" size={18} color={GRAY} />
         <TextInput
           placeholder={'Search movies'}
           value={searchTerm}
           onChangeText={setSearchTerm}
           returnKeyType={'done'}
           onSubmitEditing={handleOnSubmitEditing}
+          style={styles.inputField}
         />
       </View>
       {movies.length ? (
