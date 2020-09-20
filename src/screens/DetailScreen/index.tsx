@@ -15,7 +15,8 @@ const DetailScreen: FC = () => {
   )
 
   const { movieId } = route.params
-  const { Title, Type, Poster, Year } = movies.find((movie) => movie.imdbID === movieId) as Movie
+  const selectedMovie = movies.find((movie) => movie.imdbID === movieId) as Movie
+  const { Title, Type, Poster, Year } = selectedMovie
 
   return (
     <ImageBackground style={styles.mainContainer} source={getImageBackgroundByTitleLength(Title)}>
