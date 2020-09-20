@@ -36,7 +36,7 @@ const getImageBackgroundByTitleLength = (title: string): ImageURISource => {
 const Card: FC<CardProps> = ({ title, imageUri, style, onPress }) => {
 
   return (
-    <TouchableWithoutFeedback {...onPress}>
+    <TouchableWithoutFeedback onPress={onPress}>
       <ImageBackground
         style={{ ...styles.mainContainer, ...style }}
         source={getImageBackgroundByTitleLength(title)}

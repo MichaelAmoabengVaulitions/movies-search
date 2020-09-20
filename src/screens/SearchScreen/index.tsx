@@ -18,6 +18,7 @@ import { fetchMovies } from './store/actions'
 const SearchScreen: FC = () => {
   const dispatch = useDispatch()
   const [searchTerm, setSearchTerm] = useState('')
+  const serchTermValid = setSearchTerm.length !== 0
   const movies = useSelector(
     ({ moviesState }: AppState) =>
       moviesState && moviesState.fetchMoviesSuccess || []
@@ -33,9 +34,12 @@ const SearchScreen: FC = () => {
   }, [searchTerm])
 
   const handleOnSubmitEditing = () => {
-    searchMovie()
+    if (serchTermValid) {
+      searchMovie()
+    }
     Keyboard.dismiss()
   }
+
   return (
     <View style={styles.mainView}>
       <View style={styles.inputContainer}>

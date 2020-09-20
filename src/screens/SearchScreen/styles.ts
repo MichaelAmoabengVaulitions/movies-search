@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
     color: RED_WARNING,
     textAlign: 'center',
-    marginTop: SCREEN_HEIGHT / 2
+    marginTop: SCREEN_HEIGHT / 3
   },
   inputContainer: {
     margin: 15,
