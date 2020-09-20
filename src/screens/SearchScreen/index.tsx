@@ -21,7 +21,6 @@ const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
   const movies = useSelector(
     ({ moviesState }: AppState) => (moviesState && moviesState.fetchMoviesSuccess) || [],
   )
-  console.log('movies', movies)
 
   const fetchingMovies = useSelector(
     ({ moviesState }: AppState) => (moviesState && moviesState.fetchMoviesInProgress) || false,
