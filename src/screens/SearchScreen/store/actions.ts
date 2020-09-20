@@ -33,7 +33,7 @@ export const fetchMovies = (
       dispatch(fetchMoviesInProgress)
       const response = await fetch(Url)
       const fetchMoviesResponse: Movie[] = await response.json()
-      dispatch(fetchMoviesSuccess(fetchMoviesResponse))
+      dispatch(fetchMoviesSuccess(fetchMoviesResponse.Search))
     } catch (error) {
       let errorMessage: string
       errorMessage = typeof error === 'string' ? error : FETCHING_MOVIES_ERROR_MESSAGE

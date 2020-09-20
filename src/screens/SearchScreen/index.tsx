@@ -1,34 +1,41 @@
 import React, { FC, useEffect } from 'react'
-import { View, Text } from 'react-native'
+import { ActivityIndicator, FlatList } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import Card from '../../components/Card'
 import AppState from '../../types/AppState'
 import { fetchMovies } from './store/actions'
 
-
-import { styles } from './styles'
-
 const SearchScreen: FC = () => {
   const dispatch = useDispatch()
-
-
   const movies = useSelector(
     ({ moviesState }: AppState) =>
-      moviesState && moviesState.fetchMoviesSuccess
+      moviesState && moviesState.fetchMoviesSuccess || []
   )
-  console.log("SearchScreen:FC ---------> movies", movies)
-  const testSearchTerm: string = 'Avengers'
-
+  console.log("SearchScreen:FC -> movies", movies)
+  const fetchingMovies = useSelector(
+    ({ moviesState }: AppState) =>
+      moviesState && moviesState.fetchMoviesInProgress || false
+  )
+  const testSearchTerm: string = 'super man'
 
   useEffect(() => {
     dispatch(fetchMovies(testSearchTerm))
-  }, [])
-
+  }, [testSearchTerm])
 
   return (
-    <View style={styles.mainView}>
-      <Text>This is the search View</Text>
-    </View>
+    <>
+      <FlatList
+        data={movies}
+        renderItem={itemData =>
+          <Card
+            title={itemData.item.Title}
+            imageUri={itemData.item.Poster}
+
+          />}
+        keyExtractor={(item) => item.imdbID}
+      />
+      {fetchingMovies && <ActivityIndicator size={'large'} color={'black'} />}
+    </>
   )
 }
 
