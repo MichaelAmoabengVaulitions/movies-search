@@ -11,7 +11,7 @@ export function MainStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Search" component={SearchScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="Details" component={DetailScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Detail" component={DetailScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }

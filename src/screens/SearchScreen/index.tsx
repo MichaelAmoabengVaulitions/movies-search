@@ -8,6 +8,7 @@ import {
   View
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
+
 import Card from '../../components/Card'
 import { styles } from './styles'
 import { BLACK } from '../../theme/colors'
@@ -15,7 +16,13 @@ import AppState from '../../types/AppState'
 import { NO_MOVIES_MESSAGE } from '../../utils/constants'
 import { fetchMovies } from './store/actions'
 
-const SearchScreen: FC = () => {
+
+// TODO: Add the correct type for navigation
+interface SearchScreenProps {
+  navigation: any
+}
+
+const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
   const dispatch = useDispatch()
   const [searchTerm, setSearchTerm] = useState('')
   const serchTermValid = setSearchTerm.length !== 0
@@ -59,7 +66,7 @@ const SearchScreen: FC = () => {
               <Card
                 title={itemData.item.Title}
                 imageUri={itemData.item.Poster}
-                onPress={() => ''}
+                onPress={() => navigate('Detail', { params: { movieId: itemData.item.imdbID } })}
               />
             }
             keyExtractor={(item) => item.imdbID}
