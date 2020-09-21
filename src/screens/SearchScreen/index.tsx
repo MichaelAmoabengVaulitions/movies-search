@@ -2,6 +2,7 @@ import React, { FC, useCallback, useState } from 'react'
 import { ActivityIndicator, FlatList, Keyboard, Text, TextInput, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { Ionicons } from '@expo/vector-icons'
+import { StackNavigationProp } from '@react-navigation/stack'
 
 import Card from '../../components/Card'
 import { styles } from './styles'
@@ -9,10 +10,11 @@ import { BLACK, GRAY } from '../../theme/colors'
 import AppState from '../../types/AppState'
 import { NO_MOVIES_MESSAGE } from '../../utils/constants'
 import { fetchMovies } from './store/actions'
+import { RootStackParamList } from '../../types/Navigation'
 
-// TODO: Add the correct type for navigation
+type SearchScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Search'>
 interface SearchScreenProps {
-  navigation: any
+  navigation: SearchScreenNavigationProp
 }
 
 const SearchScreen: FC<SearchScreenProps> = ({ navigation: { navigate } }) => {
