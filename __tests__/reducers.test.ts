@@ -25,16 +25,16 @@ describe('fetch movies  reducer', () => {
   })
 })
 
-const errorMessage = 'errorMessage'
+export const errorMessage = 'errorMessage'
 
-const mockMovie: Movie = {
+export const mockMovie: Movie = {
   imdbID: 'test',
   Title: 'test',
   Type: 'test',
   Year: '2020',
   Poster: 'test poster',
 }
-const mockMovies = [mockMovie, mockMovie, mockMovie, mockMovie]
+export const mockMovies = [mockMovie, mockMovie, mockMovie, mockMovie]
 
 const fetchMoviesSuccess: actionTypes.FetchMoviesType = {
   type: actionTypes.FETCH_MOVIES_SUCCESS,

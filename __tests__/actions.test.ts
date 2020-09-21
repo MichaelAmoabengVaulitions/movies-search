@@ -7,16 +7,10 @@ import * as actions from '../src/screens/SearchScreen/store/actions'
 import * as actionTypes from '../src/screens/SearchScreen/store/actionTypes'
 import { Movie } from '../src/types/Movie'
 import { API_KEY } from '../src/utils/constants'
+import { errorMessage, mockMovies } from './reducers.test'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
-const mockData: Movie = {
-  imdbID: 'test',
-  Title: 'test',
-  Type: 'test',
-  Year: '2014',
-  Poster: 'test',
-}
 
 describe('actions', () => {
   it('should create an action fetch movies in progress', () => {
@@ -36,7 +30,6 @@ describe('actions', () => {
   })
 
   it('should create an action fetch movies error', () => {
-    const errorMessage: string = 'test error'
     const expectedAction = {
       type: actionTypes.FETCH_MOVIES_ERROR,
       payload: { errorMessage },
@@ -45,27 +38,23 @@ describe('actions', () => {
   })
 })
 
-describe('async actions', () => {
-  beforeEach(() => {
-    fetchMock.restore()
-  })
+const testSearchParam = 'Sherlock Holmes'
+const Url = `http://www.omdbapi.com/?s=${testSearchParam}&apikey=${API_KEY}`
 
+describe('fetch movies actions', () => {
   afterEach(() => {
     fetchMock.restore()
   })
-
   it('creates FETCH_MOVIES_SUCCESS when fetching movies  has been done', () => {
-    const testSearchParam = 'Sherlock Holmes'
-    const mockResult = { response: [mockData] as Movie[] }
-    const Url = `http://www.omdbapi.com/?s=${testSearchParam}&apikey=${API_KEY}`
-    fetchMock.mock(Url, { body: mockResult })
-
+    fetchMock.get(Url, {
+      response: 200,
+    })
+    const store = mockStore({})
     const expectedActions = [
       { type: actionTypes.FETCH_MOVIES_IN_PROGRESSS },
-      { type: actionTypes.FETCH_MOVIES_ERROR, payload: 'message' },
-      { type: actionTypes.FETCH_MOVIES_SUCCESS, payload: mockResult },
+      { type: actionTypes.FETCH_MOVIES_ERROR, payload: errorMessage },
+      { type: actionTypes.FETCH_MOVIES_SUCCESS, payload: { movies: mockMovies } },
     ]
-    const store = mockStore({ movies: [mockData] })
     return store.dispatch(actions.fetchMovies(testSearchParam) as any).then(() => {
       expect(store.getActions()).toEqual(expectedActions)
     })
