@@ -6,7 +6,7 @@ import {
   MoviesState,
 } from './actionTypes'
 
-const initialState: MoviesState = {
+export const initialState: MoviesState = {
   fetchMoviesInProgress: false,
   fetchMoviesSuccess: undefined,
   fetchMoviesErrorMessage: undefined,

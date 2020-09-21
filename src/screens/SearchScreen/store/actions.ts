@@ -10,20 +10,20 @@ import {
   FETCH_MOVIES_SUCCESS,
 } from './actionTypes'
 
-function fetchMoviesInProgress(): FetchMoviesType {
+export function fetchMoviesInProgress(): FetchMoviesType {
   return {
     type: FETCH_MOVIES_IN_PROGRESSS,
   }
 }
 
-function fetchMoviesSuccess(response: Movie[]): FetchMoviesType {
+export function fetchMoviesSuccess(response: Movie[]): FetchMoviesType {
   return {
     type: FETCH_MOVIES_SUCCESS,
     payload: response,
   }
 }
 
-function fetchMoviesError(errorMessage: string): FetchMoviesType {
+export function fetchMoviesError(errorMessage: string): FetchMoviesType {
   return {
     type: FETCH_MOVIES_ERROR,
     payload: { errorMessage },
